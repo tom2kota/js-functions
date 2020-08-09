@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Делегирование событий</title>
+    <style>
+        #parent {
+            width: 320px;
+        }
+
+        .active {
+            font-weight: bold;
+            width: 100%;
+            padding: 15px;
+            background-color: coral;
+            color: blanchedalmond;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Делегирование событий</h1>
+    <ul id="parent">
+        <li id="child">#1</li>
+        <li>#2</li>
+        <li>#3</li>
+        <li>#4</li>
+        <li>#5</li>
+        <li>#6</li>
+        <li>#7</li>
+        <li>#8</li>
+    </ul>
+</div>
+<blockquote>
+    Делегирование событий - это приём, заключающийся в добавлении обработчиков событий к родительскому элементу, а не к
+    дочерним элементам. Обработчик будет срабатывать всякий раз, когда событие будет запущено на дочерних элементах
+    благодаря всплытию событий в DOM. Преимущества этого приёма:
+
+    Экономит объем используемой памяти, т.к. для родительского элемента требуется только один обработчик.
+    Не нужно привязывать или убирать обработчики при добавлении и удалении элементов.
+</blockquote>
+
+<script>
+    document.querySelector('#child').onclick = function () {
+        function activate() {
+            document.querySelector('#child').classList.add('active').classList.add('active')
+        }
+
+        console.log('NO DELEGATION <script> ...')
+        activate()
+    }
+</script>
+<script>
+    let activeChild;
+
+
+    document.querySelector('#parent').onclick = function (event) {
+
+        let target = event.target;
+        console.log('target: ', target)
+        console.log('target.tagName: ', target.tagName)
+
+        if (target.tagName !== 'LI') return;
+
+        activate(target)
+
+    }
+
+    function activate(li) {
+
+        console.log('activeChild', activeChild)
+
+        if (activeChild) {
+            activeChild.classList.remove('active')
+        }
+
+        activeChild = li;
+
+        activeChild.classList.add('active')
+    }
+
+</script>
+</body>
+</html>

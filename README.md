@@ -13,6 +13,8 @@ links:
 - [Advanced working with functions](https://javascript.info/advanced-functions)
 
 - [CSS для JavaScript-разработчика](https://learn.javascript.ru/css-for-js)
+- [Руководство для прохождения интервью по фронтенду](https://github.com/yangshun/front-end-interview-handbook/tree/master/contents/ru)
+- [Делегирование событий](https://learn.javascript.ru/event-delegation)
 
 -------
 
