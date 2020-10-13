@@ -1,0 +1,10 @@
+// x = Number.MIN_VALUE  // 5e-324
+x = 0.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001
+console.log('x: ', x)
+
+let i = x
+
+console.log('Should be 0: ', i * i)
+console.log('Should be 1: ', i + 1)
+console.log('Should be -1: ', i - 1)
+console.log('Should be 1: ', i / i)
